@@ -6,11 +6,12 @@ require('sglide');		// extends jquery
 const L = require('leaflet');
 require('pelias-leaflet-plugin');
 require('leaflet.locatecontrol');
+require('leaflet.chinatmsproviders');
 
 const Browser = require('../common/browser');
 const PlanarLaplace = require('../common/laplace');
 
-const geocoderKey = '5b3ce3597851110001cf6248dc55f0492abe4923aa33f4ca1722acb8';
+const geocoderKey = '5b3ce3597851110001cf6248c537404d55134218b584ce8b9093b0c7';
 const geocoderUrl = 'https://api.openrouteservice.org/geocode';
 
 var levelMap, fixedPosMap;
@@ -21,8 +22,8 @@ var sliderRadius, sliderCacheTime;
 
 // default pos
 var currentPos = {
-	latitude: 48.86014106672441,
-	longitude: 2.3569107055664062
+	latitude: 22.603036853357032,
+	longitude: 113.09292376041412
 };
 
 Browser.init('options');
@@ -114,10 +115,11 @@ function initLevelMap() {
 
 	// map
 	levelMap = L.map('levelMap')
-		.addLayer(new L.TileLayer(
-			Browser.gui.mapTiles().url,
-			Browser.gui.mapTiles().info,
-		))
+		// .addLayer(new L.TileLayer(
+		// 	Browser.gui.mapTiles().url,
+		// 	Browser.gui.mapTiles().info,
+		// ))
+		.addLayer(L.tileLayer.chinaProvider("GaoDe.Normal.Map",{maxZoom:18,minZoom:5}))
 		.setView(latlng, 13)
 		.on('dragstart', function() {
 			levelMap.closePopup();
@@ -199,10 +201,11 @@ async function initFixedPosMap() {
 	var latlng = [st.fixedPos.latitude, st.fixedPos.longitude];
 
 	fixedPosMap = new L.map('fixedPosMap')
-		.addLayer(new L.TileLayer(
-			Browser.gui.mapTiles().url,
-			Browser.gui.mapTiles().info,
-		))
+		// .addLayer(new L.TileLayer(
+		// 	Browser.gui.mapTiles().url,
+		// 	Browser.gui.mapTiles().info,
+		// ))
+		.addLayer(L.tileLayer.chinaProvider("GaoDe.Normal.Map",{maxZoom:18,minZoom:5}))
 		.setView(latlng, 14)
 		.on('dragstart', function() {
 			fixedPosMap.closePopup();
@@ -214,7 +217,6 @@ async function initFixedPosMap() {
 			}
 			saveFixedPos(e.latlng);
 		});
-
 	// marker
 	fixedPosMap.marker = new L.marker(latlng, { draggable: true })
 		.addTo(fixedPosMap)

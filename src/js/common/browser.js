@@ -299,14 +299,14 @@ Browser.gui.getURL = function(url) {
 	return browser.runtime.getURL(url);
 }
 
-Browser.gui.mapTiles = function() {
-	return {
-		url: Browser.capabilities.isBrave()
-			? 'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png'
-			: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-		info: { attribution: 'Map data © OpenStreetMap contributors' }
-	};
-}
+// Browser.gui.mapTiles = function() {
+// 	return {
+// 		url: Browser.capabilities.isBrave()
+// 			? 'https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png'
+// 			: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+// 		info: { attribution: 'Map data © OpenStreetMap contributors' }
+// 	};
+// }
 
 
 //////////////////// capabilities ///////////////////////////

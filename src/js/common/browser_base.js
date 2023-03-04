@@ -83,8 +83,8 @@ const Browser = {
 			hideIcon: false,
 			cachedPos: {},
 			fixedPos: {
-				latitude: -4.448784,
-				longitude: -171.24832
+				latitude: 22.6030368,
+				longitude: 113.0929237
 			},
 			fixedPosNoAPI: true,
 			updateAccuracy: true,
